@@ -3,7 +3,7 @@ import { View, FlatList, SectionList, Text } from 'react-native'
 import { Link } from 'expo-router'
 
 import { useCardStore } from '@/stores/cart-store'
-import { CATEGORIES, MENU } from '@/utils/data/products'
+import { CATEGORIES, MENU, ProductProps } from '@/utils/data/products'
 
 import { Header } from '@/components/Header'
 import { CategoryButton } from '@/components/category-button'
@@ -12,7 +12,7 @@ import { Product } from '@/components/product'
 export default function Home() {
   const cardStore = useCardStore()
   const [category, setCategory] = useState(CATEGORIES[0])
-  const sectionListRef = useRef<SectionList>(null)
+  const sectionListRef = useRef<SectionList<ProductProps>>(null)
   const cardQuantityItems = cardStore.products.reduce((total, product) => total + product.quantity, 0)
 
   function handleCategorySelected(selectedCategory: string) {
