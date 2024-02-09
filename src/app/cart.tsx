@@ -1,4 +1,5 @@
 import { View, Text, ScrollView } from "react-native";
+import { Feather } from "@expo/vector-icons";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 import { Header } from "@/components/Header";
@@ -8,6 +9,8 @@ import { formatCurrency } from "@/utils/functions/format-currency";
 
 import { useCardStore } from "@/stores/cart-store";
 import { Input } from "@/components/input";
+import { Button } from "@/components/button";
+import { LinkButton } from "@/components/link-button";
 
 export default function Cart() {
 
@@ -43,6 +46,15 @@ export default function Cart() {
           </View>
         </ScrollView>
       </KeyboardAwareScrollView>
+
+      <View className="p-5 gap-5">
+        <Button>
+          <Button.Text>Enviar pedido</Button.Text>
+          <Button.Icon><Feather name="arrow-right-circle" size={20} /></Button.Icon>
+        </Button>
+
+        <LinkButton title="Voltar ao Cardápio" href="/" />
+      </View>
     </View>
   )
 }
